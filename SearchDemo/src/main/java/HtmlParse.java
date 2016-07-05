@@ -58,10 +58,6 @@ public class HtmlParse {
     private int getAboutNum(String id,String index ,Document doc){
         int count = 0;
         Elements elements = doc.select(id).select(index);
-        System.out.println(11111111);
-
-        System.out.println(doc.select("div[class=col]"));
-
         for (Element element:elements){
             // TODO: 16/7/4  此处可以进行更多的单条信息分析
             count ++;
@@ -105,8 +101,10 @@ public class HtmlParse {
 
     private int getGoogleAboutNum(String index, String Tag, Document doc){
         int count = 0;
-        Elements elements = doc.select(index);
-        System.out.println(elements);
+        Elements elements = doc.select(index).select(Tag);
+        for (Element element:elements){
+            count ++;
+        }
         return count;
     }
     /**
@@ -122,7 +120,7 @@ public class HtmlParse {
             //查找对应搜索结果的值
             result.setOnePageSearchLeftResultNum(findGoogleSearchResult("ires","[class=g]",doc));
             result.setOnePageSearchRightResultNum(findGoogleSearchResult("rhs_block","[class=g]",doc));
-            result.setOnePageSearchAboutResultNum(getGoogleAboutNum("botstuff","a",doc));
+            result.setOnePageSearchAboutResultNum(getGoogleAboutNum("[id=brs]","[class=g]",doc));
 
         } catch(NullPointerException e){
             System.out.println("谷歌搜索结果不存在");

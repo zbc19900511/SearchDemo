@@ -15,7 +15,7 @@ public class MainClass {
     //初始化html分析器
     HtmlParse baiduHtmlParse = new HtmlParse(baiduSearchResult);
     HtmlParse googleHtmlParse = new HtmlParse(googleSearchResult);
-    private final static String keyWord = "我不知道";
+    private final static String keyWord = "蚂蚁金服";
 
 
     public static void main(String[] args) throws InterruptedException {
